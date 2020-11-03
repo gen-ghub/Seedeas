@@ -14,7 +14,8 @@
 
 ### Association
 - has_many :seed
-
+- has_many :messages
+- has_many :room, through: :room_users
 
 ## seeds テーブル
 
@@ -38,7 +39,6 @@
 
 ### Association
 
-- has_many :room_users
 - has_many :users, through: room_users
 - has_many :messages
 - belongs_to :seed
