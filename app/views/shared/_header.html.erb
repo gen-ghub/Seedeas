@@ -1,13 +1,13 @@
 <header class='top-page-header'>
   <div >
-    <%= link_to  %>
+    <%= link_to 'ロゴ' %>
 
   </div>
   <div class='nav'>
     <ul class='lists-right'>
 
       <% if user_signed_in? %>
-        <li><%= link_to current_user.nickname, "#", class: "user-nickname" %></li>
+        <li><%= link_to 'マイページ', mypage_path, class: "user-name" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
