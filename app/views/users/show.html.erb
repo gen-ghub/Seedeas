@@ -49,4 +49,6 @@
 
 <% if  user_signed_in? && @user == current_user %>
    <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
+   /
+   <%= link_to '削除', user_path(current_user),method: :delete %>
 <% end %>

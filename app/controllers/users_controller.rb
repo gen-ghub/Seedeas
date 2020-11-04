@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:mypage, :edit, :update]
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :authenticate_user!, only: [:mypage, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def mypage
     redirect_to user_path(current_user)
@@ -21,6 +21,16 @@ class UsersController < ApplicationController
       redirect_to user_path(current_user)
     else
       redirect_to edit_user_path(current_user)
+    end
+  end
+
+  def destroy
+    unless @user.id == current_user.id
+      redirect_to root_path
+    end
+    if @user.destroy
+      flash[:user_delete] = "アカウントが削除されました"
+      redirect_to root_path
     end
   end
 
