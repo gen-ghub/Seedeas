@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'seeds/index'
   devise_for :users
-
+  root to:"seeds#index"
+  resources :users, only: [:show]
 end
