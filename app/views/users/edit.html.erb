@@ -2,9 +2,17 @@
 
 <%= form_with model: @user, local: true do |f| %>
   <%= render "shared/error_messages", model: f.object %>
-
-
-
+    <div class="img-upload">
+      <div class="img-upload-text">
+        プロフィール画像
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"user-image" %>
+      </div>
+    </div>
 
    <div class="field">
     <%= f.label :name %><br/>
