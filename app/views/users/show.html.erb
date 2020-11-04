@@ -11,7 +11,7 @@
       <div class="user-image">
         プロフィール画像
         <span class="user-value">
-          <%= image_tag @user.image.variant(resize: '500x500'), class: 'user^image' if @user.image.attached? %>
+          <%= image_tag @user.user_image.variant(resize: '500x500'), class: 'user^image' if @user.image.attached? %>
         </span>
       </div>
       <div class="user-name">
