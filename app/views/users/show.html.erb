@@ -1,0 +1,54 @@
+<%= render partial: "shared/header"%>
+
+<% if user_signed_in? && @user == current_user %>
+  <h1>マイページ</h1>
+<% else %>
+  <h1>ユーザーページ</h1>
+<% end %>
+
+<h1><%= @user.name %></h1>
+    <div class="user-table">
+      <div class="user-image">
+        プロフィール画像
+        <span class="user-value">
+          <%= image_tag @user.image.variant(resize: '500x500') if @user.image.attached? %>
+        </span>
+      </div>
+      <div class="user-name">
+        ユーザーネーム
+        <span class="user-value">
+          <%= @user.name %>
+        </span>
+      </div>
+      <div class="user-email">
+        メールアドレス
+        <span class="user-value">
+          <%= @user.email %>
+        </span>
+      </div>
+      <div class="user-skill">
+        スキル
+        <span class="user-value">
+          <%= @user.skill %>
+        </span>
+      </div>
+      <div class="user-position">
+        所属
+        <span class="user-value">
+          <%= @user.position %>
+        </span>
+      </div>
+      <div class="user-profile">
+        プロフィール
+        <span class="user-value">
+          <%= @user.profile %>
+        </span>
+      </div>
+    </div>
+
+
+<% if  user_signed_in? && @user == current_user %>
+   <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
+   /
+   <%= link_to '削除', user_path(current_user),method: :delete %>
+<% end %>
