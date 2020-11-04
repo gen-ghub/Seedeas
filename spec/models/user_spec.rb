@@ -14,7 +14,22 @@ describe User do
         @user.password_confirmation = 'a12345'
         expect(@user).to be_valid
       end
-
+      it 'imageが空でも登録できる' do
+        @user.image = nil
+        expect(@user).to be_valid
+      end
+      it 'skillが空でも登録できる' do
+        @user.skill = nil
+        expect(@user).to be_valid
+      end
+      it 'positionが空でも登録できる' do
+        @user.position = nil
+        expect(@user).to be_valid
+      end
+      it 'profileが空でも登録できる' do
+        @user.profile = nil
+        expect(@user).to be_valid
+      end
     end
 
     context '新規登録がうまくいかないとき' do
