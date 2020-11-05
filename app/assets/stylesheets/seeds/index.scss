@@ -1,0 +1,64 @@
+.top-slide{
+  background-color:lightskyblue;
+  width: 70vw;
+  height: 500px;
+  margin: 50px auto;
+
+
+}
+
+.top-explanation{
+  background-color:lightsalmon;
+  width: 70vw;
+  height: 700px;
+  margin: 50px auto;
+
+  h1{
+   font-size: 50px;
+   color: white;
+   text-align: center;
+   padding: 30px;
+  }
+
+  p{
+    font-size: 20px;
+    color: white;
+    text-align: center;
+    padding: 15px 30px;
+  }
+}
+
+
+
+
+
+.seed-lists {
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.seed-lists>.list {
+  width: 37vh;
+  padding: 1vw;
+  background-color: #FFF;
+}
+
+.seed-img {
+  width: 33vh;
+  height: 33vh;
+}
+
+.seed-title {
+  font-size: 2.5vh;
+}
+
+.seed-idea {
+  background-color: #FFF;
+  color: black;
+  padding: 1vw;
+}
+
+
+
