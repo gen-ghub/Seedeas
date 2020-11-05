@@ -1,5 +1,7 @@
 class SeedsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :destroy]
+  before_action :set_seed, only: [:show, :edit, :update, :destroy]
+
   def index
     @seeds = Seed.order("created_at DESC")
   end
@@ -17,10 +19,41 @@ class SeedsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def edit
+    unless @seed.user.id == current_user.id
+    redirect_to root_path
+    end
+  end
+
+  def update
+    if @seed.update(seed_params)
+      redirect_to seed_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    unless @seed.user.id == current_user.id
+      redirect_to root_path
+    end
+    if @seed.destroy
+      redirect_to root_path
+    end
+  end
+
+
   private
 
   def seed_params
     params.require(:seed).permit(:title, :image, :tag_id, :idea).merge(user_id: current_user.id)
+  end
+
+  def set_seed
+    @seed = Seed.find(params[:id])
   end
 
 end

@@ -1,0 +1,30 @@
+<%= render "shared/header"%>
+
+
+<div class="seed-show">
+  <div class="seed-box">
+    <h2 class="title">
+      <%= @seed.titie %>
+    </h2>
+    <div class='seed-img-content'>
+      <%= image_tag @seed.image ,class:"seed-box-img" if seed.image.attached? %>
+    </div>
+    <div class="seed-tag-box">
+      <span class="seed-tag">
+        <%= @seed.tag.name %>
+      </span>
+    </div>
+    <div class="seed-idea-box">
+      <p class="seed-idea">
+        <%= @seed.idea %>
+      </p>
+    </div>
+  </div>
+</div>
+
+
+    <% if @seed.user.id == current_user.id %>
+      <%= link_to '商品の編集', edit_seed_path(@seed.id), method: :get, class: "seed-red-btn" %>
+      <p class='or-text'>or</p>
+      <%= link_to '削除', seed_path(@seed.id), method: :delete, class:'seed-destroy' %>
+    <% end %>
