@@ -19,6 +19,9 @@
         <%= @seed.idea %>
       </p>
     </div>
+    <div class="seed-user">
+        <%= link_to @seed.user.name, user_path(@seed.user.id) %>
+      </div>
   </div>
 </div>
 
