@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   root to:"seeds#index"
   resources :users, only: [:show, :edit, :update, :destroy]
   get '/mypage' => 'users#mypage'
+
+  resources :seeds
 end
