@@ -9,11 +9,6 @@ describe User do
       it 'nameとemail、passwordとpassword_confirmationが存在すれば登録できる' do
         expect(@user).to be_valid
       end
-      it 'passwordが6文字以上であれば登録できる' do
-        @user.password = 'a12345'
-        @user.password_confirmation = 'a12345'
-        expect(@user).to be_valid
-      end
       it 'imageが空でも登録できる' do
         @user.image = nil
         expect(@user).to be_valid
@@ -76,12 +71,7 @@ describe User do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
-      it 'passwordは入力が半角英数字混同でないと登録できない' do
-        @user.password = 'aaaaaa'
-        @user.password_confirmation = 'aaaaaa'
-        @user.valid?
-        expect(@user.errors.full_messages).to include('Password には英字と数字の両方を含めて設定してください')
-      end
+
 
     end
   end

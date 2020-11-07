@@ -6,6 +6,7 @@
   <h1>ユーザーページ</h1>
 <% end %>
 
+
 <h1><%= @user.name %></h1>
     <div class="user-table">
       <div class="user-image">
@@ -14,6 +15,11 @@
           <%= image_tag @user.image.variant(resize: '500x500') if @user.image.attached? %>
         </span>
       </div>
+      <% if user_signed_in? && @user == current_user %>
+        <div class="create-room">
+          <%= link_to "チャットルームへ移動する", rooms_path %>
+        </div>
+      <% end %>
       <div class="user-name">
         ユーザーネーム
         <span class="user-value">
@@ -46,9 +52,44 @@
       </div>
     </div>
 
-
 <% if  user_signed_in? && @user == current_user %>
    <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
    /
    <%= link_to '削除', user_path(current_user),method: :delete %>
 <% end %>
+
+<div>
+---------------------------------------------------------------------------------------------------------------------------------------------
+</div>
+
+<div>
+<%= @user.name %>の投稿一覧
+<div>
+<ul class='seed-lists'>
+  <li class='list'>
+    <% @seeds.each do |seed| %>
+      <%= link_to seed_path(seed.id) do %>
+        <div class="seed-title">
+          <%= seed.title %>
+        </div>
+        <div class="seed-tag">
+          <%= seed.tag.name %>
+        </div>
+        <div class="seed-image" >
+          <%= image_tag seed.image.variant(resize: '300x300') if seed.image.attached? %>
+        </div>
+        <div class="seed-idea">
+          <p><%= seed.idea %></p>
+        </div>
+      <% end %>
+        <div class="seed-user">
+          <%= link_to seed.user.name, user_path(seed.user.id) %>
+        </div>
+    <% end %>
+  </li>
+
+
+
+
+</ul>
+</div>
