@@ -15,7 +15,7 @@
 ### Association
 - has_many :seed
 - has_many :messages
-- has_many :room, through: :room_users
+- has_many :rooms, through: entries
 
 ## seeds テーブル
 
@@ -32,18 +32,19 @@
 
 ## rooms テーブル
 
-| Column | Type       | Options                       |
-| ------ | ---------- | ----------------------------- |
-| name   | string     | null: false                   |
-| seeds  | references | null: false, foreign_key: true|
+| Column | Type   | Options     |
+| ------ | -------| ----------- |
+| name   | string | null: false |
+
 
 ### Association
 
-- has_many :users, through: room_users
+- has_many :entries
+- has_many :users, through: entries
 - has_many :messages
-- belongs_to :seed
 
-## room_users テーブル
+
+## entry テーブル
 
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
@@ -59,7 +60,7 @@
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
-| content | string     |                                |
+| content | string     | null: false                    |
 | user    | references | null: false, foreign_key: true |
 | room    | references | null: false, foreign_key: true |
 
