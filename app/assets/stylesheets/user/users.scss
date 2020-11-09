@@ -1,0 +1,29 @@
+
+
+.user-wrapper {
+background-color: rgba(207, 250, 87, 0.473);
+text-align: center;
+}
+
+.edit-page{
+  position: absolute;
+  top: 10vh;
+  left: 1vw;
+  & img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+  }
+}
+
+
+.user-image{
+
+  & img{
+    margin: 70px;
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+}
