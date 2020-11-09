@@ -73,8 +73,32 @@ text-align: center;
     padding: 40px;
   }
   & .user-post-wrapper{
-    
+
   }
 }
 
 
+.user-seed-contents-lists {
+  width: 70vw;
+  margin: auto;
+  align-items: center;
+  display: flex;
+  & .post-lists {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: center;
+    & .post-list{
+      padding: 3vh 2vw;
+    }
+
+    & li div{
+      color: $cBlack;
+    }
+  }
+  & .seed-image img{
+    height: 300px;
+    width: 300px;
+    object-fit: cover;
+  }
+
+}
