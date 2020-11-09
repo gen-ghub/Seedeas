@@ -31,28 +31,22 @@
   <div class="seed-contents-title">
     <h1><span>募集・提案　投稿一覧</span></h1>
   </div>
-  <div class="space">
-  </div>
-  <div class="seed-contents-lists">
-    <ul class='seed-lists'>
-      <% @seeds.each do |seed| %>
-        <li class='list'>
 
+  <div class="seed-contents-lists">
+    <ul class='post-lists'>
+      <% @seeds.each do |seed| %>
+        <li class='post-list'>
           <%= link_to seed_path(seed.id) do %>
-            <div class="seed-tag">
-              <%= seed.tag.name %>
+            <div class="seed-image" >
+              <%= image_tag seed.image if seed.image.attached? %>
             </div>
+          <% end %>
             <div class="seed-title">
               <%= seed.title %>
             </div>
-            <div class="seed-image" >
-              <%= image_tag seed.image.variant(resize: '250x250') if seed.image.attached? %>
+            <div class="seed-tag">
+              <%= seed.tag.name %>
             </div>
-
-          <% end %>
-          <div class="seed-user">
-            <%= link_to seed.user.name, user_path(seed.user.id) %>
-          </div>
         </li>
       <% end %>
     </ul>

@@ -1,11 +1,14 @@
-
+$cWhite: white;
+$cProfile:black;
+$cBlack:black;
 
 .user-wrapper {
 background-color: rgba(207, 250, 87, 0.473);
 text-align: center;
 }
 
-.edit-page{
+
+.edit-icons {
   position: absolute;
   top: 10vh;
   left: 1vw;
@@ -14,8 +17,41 @@ text-align: center;
     width: 30px;
     object-fit: cover;
   }
+  & a {
+    color: $cBlack;
+    font-size: 20px;
+    font-weight: 700;
+  }
 }
 
+.go-room {
+  position: absolute;
+  top: 17vh;
+  left: 1vw;
+  & img {
+    height: 30px;
+    width: 30px;
+    object-fit: cover;
+  }
+  & a {
+    color: $cBlack;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+.user-table{
+  color: $cProfile;
+  border-bottom: 4px solid $cBlack;
+  & h4{
+    padding: 30px;
+  }
+  & .user-name{
+    margin-bottom: 100px;
+  }
+  & .user-profile p{
+    padding: 30px;
+  }
+}
 
 .user-image{
 
@@ -27,3 +63,18 @@ text-align: center;
     border-radius: 50%;
   }
 }
+
+.user-post-list{
+  height: 10vh;
+  width: 80vw;
+  margin: auto;
+  & h1{
+    font-size: 30px;
+    padding: 40px;
+  }
+  & .user-post-wrapper{
+    
+  }
+}
+
+

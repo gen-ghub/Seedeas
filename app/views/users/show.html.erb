@@ -1,7 +1,23 @@
 
 
 <div class="user-wrapper">
-
+  <div class="left-wrapper">
+  <div class="edit-icons">
+    <% if  user_signed_in? && @user == current_user %>
+      <%= image_tag 'edit-icon.png'%>
+      <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
+        /
+      <%= link_to '削除', user_path(current_user),method: :delete %>
+    <% end %>
+  </div>
+  <div class="go-room">
+    <% if user_signed_in? && @user == current_user %>
+      <%= image_tag 'chat_icon.png'%>
+      <%= link_to "チャットルームへ移動する", rooms_path %>
+    <% end %>
+  </div>
+  </div>
+  <div class="main-wrapper">
   <div class="user-table">
     <div class="user-image">
       <% if @user.image.attached? %>
@@ -10,60 +26,40 @@
         <%= image_tag 'profile_icon.png' %>
       <% end %>
     </div>
-    <h1><%= @user.name %></h1>
-    <% if user_signed_in? && @user == current_user %>
-      <div class="create-room">
-        <%= link_to "チャットルームへ移動する", rooms_path %>
-      </div>
-    <% end %>
+
+
     <div class="user-name">
-      ユーザーネーム
-      <span class="user-value">
+      <h1>
         <%= @user.name %>
-      </span>
-    </div>
-    <div class="user-email">
-      メールアドレス
-      <span class="user-value">
-        <%= @user.email %>
-      </span>
+      </h1>
     </div>
     <div class="user-skill">
       スキル
-      <span class="user-value">
+      <h4>
         <%= @user.skill %>
-      </span>
+      </h4>
     </div>
     <div class="user-position">
       所属
-      <span class="user-value">
+      <h4>
         <%= @user.position %>
-      </span>
+      </h4>
     </div>
     <div class="user-profile">
       プロフィール
-      <span class="user-value">
+      <p>
         <%= @user.profile %>
-      </span>
+      </p>
     </div>
-    <div class="edit-page">
-    <% if  user_signed_in? && @user == current_user %>
-      <%= image_tag 'edit-icon.png'%>
-      <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
-        /
-      <%= link_to '削除', user_path(current_user),method: :delete %>
-    <% end %>
     </div>
-    <div class="boder">
-
+    <div class="user-post-list">
+      <h1>
+        <%= @user.name %>の投稿一覧
+      </h1>
     </div>
-
-    <div>
-      <%= @user.name %>の投稿一覧
-    </div>
-    <div class="">
-      <ul class='seed-lists'>
-        <li class='list'>
+    <div class="user-post-wrapper">
+      <ul class='post-lists'>
+        <li class='post-list'>
           <% @seeds.each do |seed| %>
           <%= link_to seed_path(seed.id) do %>
           <div class="seed-title">
