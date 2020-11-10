@@ -25,14 +25,14 @@ describe Seed do
       it 'tag_idが--では登録できない' do
         @seed.tag_id = 1
         @seed.valid?
-        expect(@seed.errors.full_messages).to include('Tag must be other than --')
+        expect(@seed.errors.full_messages).to include('Tag は「--」以外を選択してください')
       end
       it 'ideaが空では登録できない' do
         @seed.idea = nil
         @seed.valid?
         expect(@seed.errors.full_messages).to include("Idea can't be blank")
       end
-      
+
     end
   end
 end
