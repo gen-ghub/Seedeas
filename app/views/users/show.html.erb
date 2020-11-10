@@ -1,95 +1,79 @@
-<%= render partial: "shared/header"%>
-
-<% if user_signed_in? && @user == current_user %>
-  <h1>マイページ</h1>
-<% else %>
-  <h1>ユーザーページ</h1>
-<% end %>
 
 
-<h1><%= @user.name %></h1>
-    <div class="user-table">
-      <div class="user-image">
-        プロフィール画像
-        <span class="user-value">
-          <%= image_tag @user.image.variant(resize: '500x500') if @user.image.attached? %>
-        </span>
-      </div>
-      <% if user_signed_in? && @user == current_user %>
-        <div class="create-room">
-          <%= link_to "チャットルームへ移動する", rooms_path %>
-        </div>
+<div class="user-wrapper">
+  <div class="left-wrapper">
+  <div class="edit-icons">
+    <% if  user_signed_in? && @user == current_user %>
+      <%= image_tag 'edit-icon.png'%>
+      <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
+        /
+      <%= link_to '削除', user_path(current_user),method: :delete %>
+    <% end %>
+  </div>
+  <div class="go-room">
+    <% if user_signed_in? && @user == current_user %>
+      <%= image_tag 'chat_icon.png'%>
+      <%= link_to "チャットルームへ移動する", rooms_path %>
+    <% end %>
+  </div>
+  </div>
+  <div class="main-wrapper">
+  <div class="user-table">
+    <div class="user-image">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.image %>
+      <% else %>
+        <%= image_tag 'profile_icon.png' %>
       <% end %>
-      <div class="user-name">
-        ユーザーネーム
-        <span class="user-value">
-          <%= @user.name %>
-        </span>
-      </div>
-      <div class="user-email">
-        メールアドレス
-        <span class="user-value">
-          <%= @user.email %>
-        </span>
-      </div>
-      <div class="user-skill">
-        スキル
-        <span class="user-value">
-          <%= @user.skill %>
-        </span>
-      </div>
-      <div class="user-position">
-        所属
-        <span class="user-value">
-          <%= @user.position %>
-        </span>
-      </div>
-      <div class="user-profile">
-        プロフィール
-        <span class="user-value">
-          <%= @user.profile %>
-        </span>
-      </div>
     </div>
 
-<% if  user_signed_in? && @user == current_user %>
-   <%= link_to 'プロフィール編集', edit_user_path(current_user) %>
-   /
-   <%= link_to '削除', user_path(current_user),method: :delete %>
-<% end %>
 
-<div>
----------------------------------------------------------------------------------------------------------------------------------------------
-</div>
-
-<div>
-<%= @user.name %>の投稿一覧
-<div>
-<ul class='seed-lists'>
-  <li class='list'>
-    <% @seeds.each do |seed| %>
-      <%= link_to seed_path(seed.id) do %>
-        <div class="seed-title">
-          <%= seed.title %>
-        </div>
-        <div class="seed-tag">
-          <%= seed.tag.name %>
-        </div>
-        <div class="seed-image" >
-          <%= image_tag seed.image.variant(resize: '300x300') if seed.image.attached? %>
-        </div>
-        <div class="seed-idea">
-          <p><%= seed.idea %></p>
-        </div>
+    <div class="user-name">
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </div>
+    <div class="user-skill">
+      スキル
+      <h4>
+        <%= @user.skill %>
+      </h4>
+    </div>
+    <div class="user-position">
+      所属
+      <h4>
+        <%= @user.position %>
+      </h4>
+    </div>
+    <div class="user-profile">
+      プロフィール
+      <p>
+        <%= @user.profile %>
+      </p>
+    </div>
+    </div>
+    <div class="user-post-list">
+      <h1>
+        <%= @user.name %>の投稿一覧
+      </h1>
+    </div>
+    <div class="user-seed-contents-lists">
+      <% @seeds.each do |seed| %>
+        <%= link_to seed_path(seed.id) do %>
+          <ul class='post-lists'>
+            <li class='post-list'>
+              <div class="seed-tag-title">
+                <%= seed.tag.name %>
+                /
+                <%= seed.title %>
+              </div>
+              <div class="seed-image" >
+                <%= image_tag seed.image if seed.image.attached? %>
+              </div>
+            </li>
+          </ul>
+        <% end %>
       <% end %>
-        <div class="seed-user">
-          <%= link_to seed.user.name, user_path(seed.user.id) %>
-        </div>
-    <% end %>
-  </li>
-
-
-
-
-</ul>
+    </div>
+  </div>
 </div>

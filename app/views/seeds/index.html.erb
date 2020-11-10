@@ -1,40 +1,54 @@
-<%= render "shared/header"%>
+
 <%= flash[:user_delete] %>
 
 
-<div class="top-slide">
-<h1>スライドショー導入予定</h1>
-
+<div class="swiper-container">
+	<!-- メイン表示部分 -->
+	<div class="swiper-wrapper">
+		<!-- 各スライド -->
+		<div class="swiper-slide"><%= image_tag "slide.png" %></div>
+		<div class="swiper-slide"><%= image_tag "slide2.png" %></div>
+		<div class="swiper-slide"><%= image_tag "slide3.png" %></div>
+    <div class="swiper-slide"><%= image_tag "slide4.png" %></div>
+		<div class="swiper-slide"><%= image_tag "slide5.png" %></div>
+	</div>
+  <div class="swiper-button-prev"></div>
+	<div class="swiper-button-next"></div>
+  <div class="swiper-pagination"></div>
 </div>
+
 <div class="top-explanation">
-  <h1>アプリの内容説明</h1>
+  <h1>『Seedeas』とは</h1>
   <p>
-  業種に関わらず、業務展開の機会を提供するサービス。簡単に言えば、異業種のマッチングサービス。自社の売りと他社の売りを合わせることで、新たな業務展開の架け橋になります。
+  『Seedeas』Seeds of ideas の略でアイデアの種という意味を込めてアプリ名にしています。
+  業種に関わらず、業務展開の機会を提供するサービス。簡単に言えば、異業種のマッチングサービス。企業だけでなく個人の方でも使用していただけます。
+  気になる投稿が見つかったら、クリックして詳細画面へ！詳細画面からチャットルーム作成ができるので投稿者の方とのルームを作成してやりとりしてみよう！
   </p>
 
 </div>
 
-<ul class='seed-lists'>
-  <% @seeds.each do |seed| %>
-    <li class='list'>
-      <%= link_to seed_path(seed.id) do %>
-        <div class="seed-title">
-          <%= seed.title %>
-        </div>
-        <div class="seed-tag">
-          <%= seed.tag.name %>
-        </div>
-        <div class="seed-image" >
-          <%= image_tag seed.image.variant(resize: '300x300') if seed.image.attached? %>
-        </div>
-        <div class="seed-idea">
-          <p><%= seed.idea %></p>
-        </div>
-      <% end %>
-      <div class="seed-user">
-        <%= link_to seed.user.name, user_path(seed.user.id) %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+<div class="seed-contents">
+  <div class="seed-contents-title">
+    <h1><span>募集・提案　投稿一覧</span></h1>
+  </div>
 
+  <div class="seed-contents-lists">
+    <ul class='post-lists'>
+      <% @seeds.each do |seed| %>
+        <li class='post-list'>
+          <%= link_to seed_path(seed.id) do %>
+            <div class="seed-image" >
+              <%= image_tag seed.image if seed.image.attached? %>
+            </div>
+          <% end %>
+            <div class="seed-title">
+              <%= seed.title %>
+            </div>
+            <div class="seed-tag">
+              <%= seed.tag.name %>
+            </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

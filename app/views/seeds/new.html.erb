@@ -14,7 +14,7 @@
       <%= form.collection_select(:tag_id, Tag.all, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
       </div>
       <div>
-      <%= form.text_area :idea, placeholder: "idea", rows: "10" %>
+      <%= form.text_area :idea, placeholder: "投稿の説明文を入力", rows: "10" %>
       </div>
       <%= form.submit "SEND" %>
     <% end %>
