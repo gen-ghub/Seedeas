@@ -19,7 +19,11 @@ $cSkyblue:#3ccace;
 	height: 100%;
 	text-align: center;
   line-height: 250px;
-
+  & img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 }
 /* 4の倍数＋1枚目のスライドのスタイル（1枚目、5枚目…） */
 .swiper-slide:nth-child(4n+1) {
