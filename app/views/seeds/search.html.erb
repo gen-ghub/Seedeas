@@ -1,0 +1,22 @@
+
+
+  <div class="seed-contents-lists">
+    <ul class='post-lists'>
+      <% @seeds.each do |seed| %>
+        <li class='post-list'>
+          <%= link_to seed_path(seed.id) do %>
+            <div class="seed-image" >
+              <%= image_tag seed.image if seed.image.attached? %>
+            </div>
+          <% end %>
+            <div class="seed-title">
+              <%= seed.title %>
+            </div>
+            <div class="seed-tag">
+              <%= seed.tag.name %>
+            </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+

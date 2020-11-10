@@ -45,6 +45,9 @@ class SeedsController < ApplicationController
     end
   end
 
+  def search
+    @seeds = Seed.search(params[:keyword])
+  end
 
   private
 
