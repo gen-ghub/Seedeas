@@ -12,13 +12,7 @@ class Seed < ApplicationRecord
 
   validates :tag_id,numericality: { other_than: 1, message: 'は「--」以外を選択してください' }
 
-  def self.search(search)
-    if search != ""
-      Seed.where('title LIKE(?)', "%#{search}%")
-    else
-      Seed.all
-    end
-  end
+ 
 
 end
 
