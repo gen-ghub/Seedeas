@@ -45,6 +45,19 @@ class SeedsController < ApplicationController
     end
   end
 
+  def search
+    redirect_to root_path if params[:keyword] == ""
+
+    split_keyword = params[:keyword].split(/[[:blank:]]+/)
+
+    @seeds = []
+    split_keyword.each do |keyword|
+      next if keyword == ""
+      @seeds += Seed.where('title LIKE(?)', "%#{keyword}%")
+    end
+    @seeds.uniq!
+
+  end
 
   private
 

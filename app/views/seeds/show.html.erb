@@ -1,36 +1,53 @@
 
-
-
-<div class="seed-show">
-  <div class="seed-box">
-    <h2 class="title">
-      <%= @seed.title %>
-    </h2>
-    <div class='seed-img-content'>
-      <%= image_tag @seed.image ,class:"seed-box-img" if @seed.image.attached? %>
-    </div>
-    <div class="seed-tag-box">
-      <span class="seed-tag">
-        <%= @seed.tag.name %>
-      </span>
-    </div>
-    <div class="seed-idea-box">
-      <p class="seed-idea">
-        <%= @seed.idea %>
-      </p>
-    </div>
-    <div class="seed-user">
-        <%= link_to @seed.user.name, user_path(@seed.user.id) %>
+<div class="seed-show-main">
+  <div class="seed-show-wrapper">
+    <div class="seed-show-left">
+    <% if user_signed_in? %>
+      <div class="new-room-btn">
+        <%= image_tag 'room.png'%>
+        <%= link_to "ルームを作成", new_room_path %>
       </div>
+    <% end %>
+
+        <% if user_signed_in? %>
+          <% if @seed.user.id == current_user.id %>
+          <div class="edit-seed-btn">
+            <%= image_tag 'edit-icon.png'%>
+            <%= link_to '投稿の編集', edit_seed_path(@seed.id), method: :get, class: "seed-red-btn" %>
+          </div>
+          <div class="delete-seed-btn">
+            <%= image_tag 'delete.png'%>
+            <%= link_to '投稿を削除', seed_path(@seed.id), method: :delete, class:'seed-destroy' %>
+          </div>
+          <% end %>
+        <% end %>
+    </div>
+
+    <div class="seed-show-center">
+      <div class="seed-box">
+        <div class="seed-tag-box">
+          <span class="seed-tag">
+            <%= @seed.tag.name %>
+          </span>
+        </div>
+        <h2 class="title">
+          <%= @seed.title %>
+        </h2>
+        <div class='seed-img-content'>
+          <%= image_tag @seed.image ,class:"seed-box-img" if @seed.image.attached? %>
+        </div>
+        <div class="seed-idea-box">
+          <p class="seed-idea">
+            <%= @seed.idea %>
+          </p>
+        </div>
+        <div class="seed-user">
+            投稿者 <%= link_to @seed.user.name, user_path(@seed.user.id) %>
+        </div>
+      </div>
+
+    </div>
+    <div class="seed-show-right">
+    </div>
   </div>
 </div>
-  <div class="create-room">
-    <%= link_to "チャットを作成する", new_room_path %>
-  </div>
-    <% if user_signed_in? %>
-    <% if @seed.user.id == current_user.id %>
-      <%= link_to '商品の編集', edit_seed_path(@seed.id), method: :get, class: "seed-red-btn" %>
-      <p class='or-text'>or</p>
-      <%= link_to '削除', seed_path(@seed.id), method: :delete, class:'seed-destroy' %>
-    <% end %>
-    <% end %>

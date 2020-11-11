@@ -85,8 +85,15 @@ header *{
 .header {
   width: 100vw;
   padding: 10px 10px;
-  display: flex;
   background-color: $cYellowgreen;
+}
+
+.heder-wrapper{
+  display: flex;
+  & .left-wrapper{
+    display: flex;
+  }
+
 }
 
 .logo{
@@ -113,7 +120,7 @@ header *{
 }
 
 .search-form {
-  width: 55vw;
+  width: 50vw;
   height: 5vh;
   justify-content: center;
   display: flex;
@@ -127,18 +134,21 @@ header *{
   padding-left: 10px;
 }
 
-.search-button {
-  width: 5vh;
-  border: 0;
+
+.search-btn {
+  display: inline-block;
+  font-weight: 700;
+  perspective: 300px;
+  width: 150px;
+  margin: 0 auto;
   cursor: pointer;
-  background-color: #3ccace;
-  padding: 8px;
-
+  border-radius:5px;
+  background-color: $cYellowgreen;
+  color: $cWhite;
+  border: 2px solid $cWhite;
+  &:hover{
+    background-color: rgb(168, 238, 150);
+  }
 }
-
-.search-icon {
-  width: 100%;
-}
-
 
 

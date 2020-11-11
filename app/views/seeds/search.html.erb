@@ -1,0 +1,31 @@
+<div class="search-main">
+  <div class="search-wrapper-title">
+    <h2>検索結果一覧</h2>
+  </div>
+<div class="search-wrapper">
+  <div class="search-wrapper-left">
+  </div>
+  <div class="search-wrapper-main">
+      <div class="seed-contents-lists">
+        <ul class='post-lists'>
+          <% @seeds.each do |seed| %>
+            <li class='post-list'>
+              <%= link_to seed_path(seed.id) do %>
+                <div class="seed-image" >
+                  <%= image_tag seed.image if seed.image.attached? %>
+                </div>
+              <% end %>
+                <div class="seed-title">
+                  <%= seed.title %>
+                </div>
+                <div class="seed-tag">
+                  <%= seed.tag.name %>
+                </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+  <div class="search-wrapper-right">
+  </div>
+</div>
