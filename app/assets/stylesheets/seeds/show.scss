@@ -1,0 +1,89 @@
+$cWhite: white;
+$cBlack:black;
+
+
+.seed-show-main{
+  background-color: rgba(207, 250, 87, 0.473);
+}
+
+
+.seed-show-wrapper{
+  display: flex;
+  text-align: center;
+
+  & .seed-show-left{
+    width: 15vw;
+    height: 90vh;
+
+    .new-room-btn {
+      position: absolute;
+      top: 10vh;
+      left: 1vw;
+      & img {
+        height: 30px;
+        width: 30px;
+        object-fit: cover;
+      }
+      & a {
+        color: $cBlack;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+
+    .edit-seed-btn {
+      position: absolute;
+      top: 15vh;
+      left: 1vw;
+      & img {
+        height: 30px;
+        width: 30px;
+        object-fit: cover;
+      }
+      & a {
+        color: $cBlack;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+    .delete-seed-btn {
+      position: absolute;
+      top: 20vh;
+      left: 1vw;
+      & img {
+        height: 30px;
+        width: 30px;
+        object-fit: cover;
+      }
+      & a {
+        color: $cBlack;
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+  }
+  & .seed-show-right{
+    width: 15vw;
+    height: 90vh;
+  }
+  & .seed-show-center{
+    width: 70vw;
+    padding-top: 100px;
+    & .seed-tag{
+      font-size: 60px;
+    }
+    & h2{
+      font-size: 50px;
+      color: $cBlack;
+      padding: 20px;
+    }
+    & .seed-box-img{
+      height: 400px;
+      width: 400px;
+      object-fit: cover;
+    }
+    & .seed-user{
+      padding: 20px;
+    }
+  }
+}

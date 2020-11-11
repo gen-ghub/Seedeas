@@ -93,7 +93,7 @@ header *{
   & .left-wrapper{
     display: flex;
   }
-  
+
 }
 
 .logo{
@@ -136,15 +136,19 @@ header *{
 
 
 .search-btn {
-  position: relative;
   display: inline-block;
-  transform-style: preserve-3d;
   font-weight: 700;
   perspective: 300px;
   width: 150px;
-  height: 45px;
   margin: 0 auto;
   cursor: pointer;
+  border-radius:5px;
+  background-color: $cYellowgreen;
+  color: $cWhite;
+  border: 2px solid $cWhite;
+  &:hover{
+    background-color: rgb(168, 238, 150);
+  }
 }
 
 
